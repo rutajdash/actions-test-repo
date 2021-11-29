@@ -40,4 +40,4 @@ jobs:
 
       - uses: actionsx/prettier@v2
         with:
-          args: --check --config ${{GITHUB_ACTION_PATH}}/.prettierrc.yml --ignore-path ${{GITHUB_ACTION_PATH}}/.prettierignore --no-error-on-unmatched-pattern **/*.js
+          args: --check --config $GITHUB_ACTION_PATH/.prettierrc.yml --ignore-path $GITHUB_ACTION_PATH/.prettierignore --no-error-on-unmatched-pattern **/*.js
