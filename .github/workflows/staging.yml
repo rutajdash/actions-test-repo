@@ -8,10 +8,10 @@ permissions:
   actions: read
   checks: read
   contents: read
-  deployments: read
+  deployments: write
   issues: write
   discussions: write
-  packages: read
+  packages: write
   pull-requests: write
   repository-projects: read
   security-events: read
