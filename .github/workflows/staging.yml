@@ -34,10 +34,6 @@ jobs:
         with:
           node-version: "14"
 
-      - uses: actionsx/prettier@v2
-        with:
-          args: --find-config-path index.js
+      - run: npm install --global prettier@latest
 
-      - uses: actionsx/prettier@v2
-        with:
-          args: --check --config $GITHUB_ACTION_PATH/.prettierrc.yml --ignore-path $GITHUB_ACTION_PATH/.prettierignore --no-error-on-unmatched-pattern **/*.js
+      - run: prettier --check --config ./.prettierrc.yml --ignore-path ./.prettierignore --no-error-on-unmatched-pattern **/*.js
