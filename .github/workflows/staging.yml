@@ -34,6 +34,7 @@ jobs:
         with:
           node-version: "14"
 
-      - run: npm install --global prettier@latest
-
-      - run: prettier --check --config ./.prettierrc.yml --ignore-path ./.prettierignore --no-error-on-unmatched-pattern **/*.js
+      - name: Run Prettier
+        uses: rutajdash/prettier-cli-action@cbb0a59de4684855faf5154e84870fbffedb12fe
+        with:
+          config_path: './.prettierrc.yml'
