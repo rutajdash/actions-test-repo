@@ -24,7 +24,6 @@ env:
 jobs:
   prettier:
     name: Prettier Check
-    needs: prepare
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
