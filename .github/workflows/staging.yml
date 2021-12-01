@@ -1,25 +1,10 @@
-name: Staging CI/CD
+name: Continuous Integration
 
+# This action works with pull requests and pushes on the main branch
 on:
+  pull_request:
   push:
     branches: [main]
-
-permissions:
-  actions: read
-  checks: read
-  contents: read
-  deployments: write
-  issues: write
-  discussions: write
-  packages: write
-  pull-requests: write
-  repository-projects: read
-  security-events: read
-  statuses: read
-
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   prettier:
@@ -29,18 +14,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: "14"
-
       - name: Run Prettier
         id: prettier-run
         uses: rutajdash/prettier-cli-action@add69d989fe32136a4ee5f6f9026ae830bbc21b8
         with:
           config_path: ./.prettierrc.yml
 
+      # This step only runs if prettier finds errors causing the previous step to fail
+      # This steps lists the files where errors were found
       - name: Prettier Output
         if: ${{ failure() }}
         shell: bash
-        run: echo "The following files are not formatted:${{steps.prettier-run.outputs.prettier_output}}"
+        run: |
+        echo "The following files are not formatted:"
+        echo "${{steps.prettier-run.outputs.prettier_output}}"
