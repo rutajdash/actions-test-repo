@@ -35,6 +35,6 @@ jobs:
           node-version: "14"
 
       - name: Run Prettier
-        uses: rutajdash/prettier-cli-action@d656aed1d4dd9cac8bcfd090ac63c46fef1f6b2d
+        uses: rutajdash/prettier-cli-action@35880a3ef60682d616b41be2447f66226dce0227
         with:
           config_path: ./.prettierrc.yml
