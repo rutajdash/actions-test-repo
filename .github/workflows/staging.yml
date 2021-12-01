@@ -36,13 +36,11 @@ jobs:
 
       - name: Run Prettier
         id: prettier-run
-        uses: rutajdash/prettier-cli-action@f978d2eb09b43478486a6133ac7d3a5e428fa3d8
+        uses: rutajdash/prettier-cli-action@3e0ea71aee9c4a8dc6f2b13f6ba050ff9291a4ba
         with:
           config_path: ./.prettierrc.yml
 
       - name: Prettier Output
-        if: steps.prettier-run.outputs.prettier_output != 0 && steps.prettier-run.outputs.prettier_output != ''
+        if: ${{ failure() }}
         shell: bash
-        run: | 
-          echo "The following files are not formatted:\n${{steps.prettier-run.outputs.prettier_output}}"
-          exit 1
+        run: echo "The following files are not formatted:${{steps.prettier-run.outputs.prettier_output}}"
