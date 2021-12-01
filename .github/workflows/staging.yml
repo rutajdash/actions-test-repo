@@ -36,7 +36,7 @@ jobs:
 
       - name: Run Prettier
         id: prettier-run
-        uses: rutajdash/prettier-cli-action@3e0ea71aee9c4a8dc6f2b13f6ba050ff9291a4ba
+        uses: rutajdash/prettier-cli-action@add69d989fe32136a4ee5f6f9026ae830bbc21b8
         with:
           config_path: ./.prettierrc.yml
 
