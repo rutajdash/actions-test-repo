@@ -35,6 +35,10 @@ jobs:
           node-version: "14"
 
       - name: Run Prettier
-        uses: rutajdash/prettier-cli-action@cbb0a59de4684855faf5154e84870fbffedb12fe
+        uses: rutajdash/prettier_action@bdfa447d73b3403d4814b5624f598a3ac53f8b68
         with:
-          config_path: './.prettierrc.yml'
+          prettier_options: -c ./.prettierrc --check
+          file_pattern: ./
+          dry: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
