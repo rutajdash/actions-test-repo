@@ -37,7 +37,7 @@ jobs:
       - name: Run Prettier
         uses: rutajdash/prettier_action@bdfa447d73b3403d4814b5624f598a3ac53f8b68
         with:
-          prettier_options: -c ./.prettierrc --check
+          prettier_options: -c ./.prettierrc.yml --check
           file_pattern: ./
           dry: true
         env:
