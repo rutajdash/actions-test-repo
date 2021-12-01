@@ -35,7 +35,7 @@ jobs:
           node-version: "14"
 
       - name: Run Prettier
-        uses: rutajdash/prettier_action@bdfa447d73b3403d4814b5624f598a3ac53f8b68
+        uses: rutajdash/prettier_action@5c76dfda2a5036a6a159513efebb6720594a1712
         with:
           prettier_options: -c ./.prettierrc.yml --check
           file_pattern: ./
