@@ -35,6 +35,11 @@ jobs:
           node-version: "14"
 
       - name: Run Prettier
-        uses: rutajdash/prettier-cli-action@35880a3ef60682d616b41be2447f66226dce0227
+        id: prettier-run
+        uses: rutajdash/prettier-cli-action@f978d2eb09b43478486a6133ac7d3a5e428fa3d8
         with:
           config_path: ./.prettierrc.yml
+
+      - name: Prettier Output
+        shell: bash
+        run: echo ${{steps.prettier-run.outputs.prettier_output}}
