@@ -52,7 +52,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/staging:${{ github.sha }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/staging
 
       - name: Build and push Docker image
         id: docker_build
