@@ -24,7 +24,6 @@ env:
 jobs:
   docker-build:
     name: Build and publish Docker Container
-    needs: prettier
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
