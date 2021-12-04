@@ -1,8 +1,8 @@
-name: Staging CI/CD
+name: Production CI/CD
 
 on:
-  push:
-    branches: [main]
+  release:
+    types: [released]
 
 permissions:
   actions: read
@@ -52,14 +52,14 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/staging
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: |
             latest=true
           tags: |
             type=sha
             type=sha,format=long
-            type=ref,event=branch
-            type=raw,value=staging
+            type=semver,pattern={{version}}
+            type=raw,value=production
 
       - name: Output Data
         run: |
