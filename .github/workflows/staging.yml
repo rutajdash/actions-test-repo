@@ -54,6 +54,11 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/staging
 
+      - name: Output Data
+        run: |
+          echo "Tags: ${{ steps.meta.outputs.tags }}"
+          echo "Labels: ${{ steps.meta.outputs.labels }}"
+
       - name: Build and push Docker image
         id: docker_build
         uses: docker/build-push-action@v2
