@@ -53,6 +53,10 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/staging
+          flavor: |
+            latest=true
+          tags: |
+            type=sha
 
       - name: Output Data
         run: |
