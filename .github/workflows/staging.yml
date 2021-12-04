@@ -57,6 +57,9 @@ jobs:
             latest=true
           tags: |
             type=sha
+            type=sha,format=long
+            type=ref,event=branch
+            type=edge,branch=main
 
       - name: Output Data
         run: |
