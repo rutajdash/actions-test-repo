@@ -58,8 +58,7 @@ jobs:
           tags: |
             type=sha
             type=sha,format=long
-            type=ref,event=branch
-            type=raw,value=staging
+            type=semver,pattern={{version}}
 
       - name: Output Data
         run: |
