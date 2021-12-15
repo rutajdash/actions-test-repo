@@ -17,11 +17,6 @@ permissions:
   security-events: read
   statuses: read
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-  NODE_ENV: staging
-
 jobs:
   setup:
     uses: rutajdash/actions-test-repo/.github/workflows/setup.yml@main
@@ -50,16 +45,3 @@ jobs:
   mocha:
     needs: [eslint, prettier]
     uses: rutajdash/actions-test-repo/.github/workflows/mocha.yml@main
-
-  build:
-    needs: mocha
-    uses: rutajdash/actions-test-repo/.github/workflows/build.yml@main
-    with:
-      node_env: ${{ env.NODE_ENV }}
-      image_name: ${{ env.IMAGE_NAME }}
-      registry: ${{ env.REGISTRY }}
-      context: .
-      dockerfile: ./Dockerfile
-      is_latest: true
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
