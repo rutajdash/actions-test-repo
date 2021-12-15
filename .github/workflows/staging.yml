@@ -49,7 +49,7 @@ jobs:
 
   mocha:
     needs: [eslint, prettier]
-    uses: rutajdash/action-test-repo/.github/workflows/mocha.yml@main
+    uses: rutajdash/actions-test-repo/.github/workflows/mocha.yml@main
 
   build:
     needs: mocha
