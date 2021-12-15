@@ -30,7 +30,7 @@ jobs:
         run: unzip app.zip
 
       - name: Run ESLint
-        uses: reviewdog/action-eslint@v1
+        uses: reviewdog/action-eslint@v1.14.0
         with:
           reporter: ${{ inputs.reporter }}
           github_token: ${{ secrets.token }}
