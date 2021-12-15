@@ -12,6 +12,9 @@ on:
       eslint_flags:
         required: true
         type: string
+      workdir:
+        required: true
+        type: string
     secrets:
       token:
         required: true
@@ -36,3 +39,4 @@ jobs:
           github_token: ${{ secrets.token }}
           fail_on_error: ${{ inputs.fail_on_error }}
           eslint_flags: ${{ inputs.eslint_flags }}
+          workdir: ${{ inputs.workdir }}
