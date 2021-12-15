@@ -24,13 +24,13 @@ env:
 
 jobs:
   setup:
-    uses: rutajdash/action-test-repo/.github/workflows/setup.yml@main
+    uses: rutajdash/actions-test-repo/.github/workflows/setup.yml@main
     with:
       setup_dev: true
 
   eslint:
     needs: setup
-    uses: rutajdash/action-test-repo/.github/workflows/eslint.yml@main
+    uses: rutajdash/actions-test-repo/.github/workflows/eslint.yml@main
     with:
       reporter: github-check
       fail_on_error: true
@@ -40,7 +40,7 @@ jobs:
 
   prettier:
     needs: setup
-    uses: rutajdash/action-test-repo/.github/workflows/prettier.yml@main
+    uses: rutajdash/actions-test-repo/.github/workflows/prettier.yml@main
     with:
       file_pattern: './server/.'
       config_path: './.prettierrc.yml'
@@ -53,7 +53,7 @@ jobs:
 
   build:
     needs: mocha
-    uses: rutajdash/action-test-repo/.github/workflows/build.yml@main
+    uses: rutajdash/actions-test-repo/.github/workflows/build.yml@main
     with:
       node_env: ${{ env.NODE_ENV }}
       image_name: ${{ env.IMAGE_NAME }}
