@@ -32,11 +32,20 @@ jobs:
       - name: Unzip Artifact
         run: unzip app.zip
 
+      # - name: Run ESLint
+      #   uses: reviewdog/action-eslint@v1.14.0
+      #   with:
+      #     reporter: ${{ inputs.reporter }}
+      #     github_token: ${{ secrets.token }}
+      #     fail_on_error: ${{ inputs.fail_on_error }}
+      #     eslint_flags: ${{ inputs.eslint_flags }}
+      #     workdir: ${{ inputs.workdir }}
+
       - name: Run ESLint
-        uses: reviewdog/action-eslint@v1.14.0
-        with:
-          reporter: ${{ inputs.reporter }}
-          github_token: ${{ secrets.token }}
-          fail_on_error: ${{ inputs.fail_on_error }}
-          eslint_flags: ${{ inputs.eslint_flags }}
-          workdir: ${{ inputs.workdir }}
+        run: eslint -c ${{ inputs.config_path }} --ignore path ${{ inputs.ignore_path }} --output-file eslint_report.txt
+
+      - name: ESLint Output
+        if: ${{ failure() }}
+        shell: bash
+        run: |
+          echo eslint_report.txt
