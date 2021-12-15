@@ -1,0 +1,6 @@
+version: "3.7"
+
+services:
+  reclamation:
+    image: ghcr.io/rutajdash/actions-test-repo/staging:latest
+    command: node app.js

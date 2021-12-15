@@ -1,0 +1,48 @@
+name: Development CI/CD
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  deployments: read
+  issues: write
+  discussions: write
+  packages: read
+  pull-requests: write
+  repository-projects: read
+  security-events: read
+  statuses: read
+
+jobs:
+  setup:
+    uses: rutajdash/actions-test-repo/.github/workflows/setup.yml@main
+    if: github.event.review.state == 'approved' && contains(github.event.pull_request.labels.*.name, 'safe-for-checks')
+    with:
+      setup_dev: true
+
+  eslint:
+    needs: setup
+    uses: rutajdash/actions-test-repo/.github/workflows/eslint.yml@main
+    with:
+      reporter: github-pr-review
+      fail_on_error: true
+      eslint_flags: 'server/'
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+
+  prettier:
+    needs: setup
+    uses: rutajdash/actions-test-repo/.github/workflows/prettier.yml@main
+    with:
+      file_pattern: './server/.'
+      config_path: './.prettierrc.yml'
+      ignore_path: './.prettierignore'
+      fail_on_error: true
+
+  mocha:
+    needs: [eslint, prettier]
+    uses: rutajdash/actions-test-repo/.github/workflows/mocha.yml@main
