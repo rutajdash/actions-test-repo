@@ -27,12 +27,14 @@ jobs:
     needs: setup
     uses: rutajdash/actions-test-repo/.github/workflows/eslint.yml@main
     with:
-      reporter: github-check
-      fail_on_error: true
-      eslint_flags: ''
-      workdir: ${{ github.workspace }}
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      config_path: ./.eslintrc.yml
+      ignore_path: ./.eslintignore
+    #   reporter: github-check
+    #   fail_on_error: true
+    #   eslint_flags: ''
+    #   workdir: ${{ github.workspace }}
+    # secrets:
+    #   token: ${{ secrets.GITHUB_TOKEN }}
 
   prettier:
     needs: setup

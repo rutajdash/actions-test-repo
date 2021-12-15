@@ -3,21 +3,27 @@ name: ESLint Check
 on:
   workflow_call:
     inputs:
-      reporter:
+      # reporter:
+      #   required: true
+      #   type: string
+      # fail_on_error:
+      #   required: true
+      #   type: boolean
+      # eslint_flags:
+      #   required: true
+      #   type: string
+      # workdir:
+      #   required: true
+      #   type: string
+      config_path:
         required: true
         type: string
-      fail_on_error:
-        required: true
-        type: boolean
-      eslint_flags:
+      ignore_path:
         required: true
         type: string
-      workdir:
-        required: true
-        type: string
-    secrets:
-      token:
-        required: true
+    # secrets:
+    #   token:
+    #     required: true
 
 jobs:
   eslint:
